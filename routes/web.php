@@ -24,3 +24,7 @@ Route::get('/coba', function () {
 Route::get('/bootstrap', function () {
     return view('bootstrap');
 });
+
+Route::get('/slicing', function () {
+    return view('slicing-ui');
+});
