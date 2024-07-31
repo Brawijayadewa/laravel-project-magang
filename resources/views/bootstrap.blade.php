@@ -12,6 +12,7 @@
         <h1>TEST</h1>
       <h1>Hello World!</h1>
       <p>This Is Bootstrap Test.</p>
+      <p>Another This Is Bootstrap Test.</p>
       <div class="container">          
         <table class="table table-striped">  
           <thead>
