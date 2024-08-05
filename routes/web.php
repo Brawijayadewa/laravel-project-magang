@@ -28,3 +28,12 @@ Route::get('/bootstrap', function () {
 Route::get('/slicing', function () {
     return view('slicing-ui');
 });
+
+
+Route::get('/login', function () {
+    return view('login/index');
+});
+
+Route::get('/register', function () {
+    return view('register/index');
+});
