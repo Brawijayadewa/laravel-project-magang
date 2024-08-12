@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,9 +31,8 @@ Route::get('/slicing', function () {
 });
 
 
-Route::get('/login', function () {
-    return view('login/index');
-});
+Route::get('/login', [AuthController::class, 'loginIndex'])->name('login.index');
+Route::post('/login', [AuthController::class, 'login'])->name('login.store');
 
 Route::get('/register', function () {
     return view('register/index');
