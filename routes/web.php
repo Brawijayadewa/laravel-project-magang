@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\SalesCallController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,3 +42,5 @@ Route::get('/register', function () {
 Route::get('/salesCall', function(){
     return view('salesCallReport.index');
 }); 
+
+Route::post('/salesCall', [SalesCallController::class, 'store'])->name('sales.store');
