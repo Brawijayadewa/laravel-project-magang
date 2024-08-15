@@ -37,3 +37,7 @@ Route::post('/login', [AuthController::class, 'login'])->name('login.store');
 Route::get('/register', function () {
     return view('register/index');
 });
+
+Route::get('/salesCall', function(){
+    return view('salesCallReport.index');
+}); 
