@@ -33,7 +33,7 @@ class SalesCallController extends Controller
     } 
     SalesCallReport::create($input);
 
-    return redirect('/');
+    return redirect('/'); 
     }
     
         
