@@ -16,7 +16,10 @@ use App\Http\Controllers\SalesCallController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('dashboard/index');
+});
+Route::get('/menu', function () {
+    return view('dashboard/menu');
 });
 
 Route::get('/coba', function () {
