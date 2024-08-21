@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('template.sales-call.index')
 
 @section('title')
     Sales Call Report
@@ -27,9 +27,9 @@
                 @enderror
             </div>
             <div class="mb-2">
-                <label for="regency" class="form-label">Regency</label><br>
-                <input type="text" class="form-control" id="regency" name="regency" value="{{ old('regency')}}">
-                @error('regency')
+                <label for="city" class="form-label">City</label><br>
+                <input type="text" class="form-control" id="city" name="city" value="{{ old('city')}}">
+                @error('city')
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>

@@ -1,6 +1,10 @@
-@extends('template/header')
-@section('container')
+@extends('template.back.index')
 
+@section('title')
+    Dashboard Admin
+@endsection
+
+@section('container')
 <div class="container-fluid">
 
     <!-- Page Heading -->

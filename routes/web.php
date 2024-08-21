@@ -15,9 +15,9 @@ use App\Http\Controllers\SalesCallController;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard/index');
-});
+// Route::get('/', function () {
+//     return view('dashboard/index');
+// });
 Route::get('/menu', function () {
     return view('dashboard/menu');
 });
@@ -34,10 +34,6 @@ Route::get('/slicing', function () {
     return view('slicing-ui');
 });
 
-
-Route::get('/login', [AuthController::class, 'loginIndex'])->name('login.index');
-Route::post('/login', [AuthController::class, 'login'])->name('login.store');
-
 Route::get('/register', function () {
     return view('register/index');
 });
@@ -47,3 +43,15 @@ Route::get('/salesCall', function(){
 }); 
 
 Route::post('/salesCall', [SalesCallController::class, 'store'])->name('sales.store');
+
+// Baru
+
+Route::get('/login', [AuthController::class, 'loginIndex'])->name('login.index');
+Route::post('/login', [AuthController::class, 'login'])->name('login.store');
+
+Route::get('/sales-call', [SalesCallController::class, 'index'])->name('sales.index');
+Route::post('/sales-call', [SalesCallController::class, 'store'])->name('sales.store');
+
+Route::get('/dashboard-admin', function() {
+    return view('layouts.back.admin.dashboard.index');
+});

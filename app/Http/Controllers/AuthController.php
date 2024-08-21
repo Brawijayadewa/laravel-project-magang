@@ -9,7 +9,7 @@ class AuthController extends Controller
 {
     public function loginIndex()
     {
-        return view('login/index');
+        return view('layouts.auth.login.index');
     }
     
     public function login(Request $request) {
@@ -25,7 +25,7 @@ class AuthController extends Controller
 
        if(Auth::attempt($input))
         {
-            return redirect('/');
+            return redirect('/dashboard-admin');
         }
 
         else

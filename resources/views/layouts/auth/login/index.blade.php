@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('template.auth.index')
 
 @section('title')
     Login

@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Repositories\AttachmentRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +14,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind('AttachmentRepository', function ($app) {
+            return new AttachmentRepository($app->make(\App\Attachment::class));
+        });
     }
 
     /**
