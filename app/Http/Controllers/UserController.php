@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Repositories\UserRepository;
 
-class UserAdminController extends Controller
+class UserController extends Controller
 {
     protected $userRepository;
 
@@ -16,17 +16,15 @@ class UserAdminController extends Controller
 
     public function index() 
     {
-        return view('layouts.back.super_admin.user_admin.index');
+        return view('layouts.back.admin.user.index');
     }
 
     public function getUser()
     {
-        $param = [];
-        $param['get_by_role'] = 'admin';
-        $user = $this->userRepository->getData($param)->get();
+        $user = $this->userRepository->getData()->get();
 
         return response()->json([
-            'message' => 'All user admin',
+            'message' => 'All user',
             'user' => $user,
         ], 200);
     }

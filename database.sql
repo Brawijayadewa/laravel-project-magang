@@ -6,25 +6,11 @@ CREATE TABLE user (
     email_verified_at TIMESTAMP NULL,
     password VARCHAR(255) NOT NULL,
     remember_token VARCHAR(100) NULL,
-    role ENUM('super_admin', 'admin', 'sales') NOT NULL,
+    role ENUM('admin', 'sales') NOT NULL,
     created_at TIMESTAMP NULL,
     created_by BIGINT NOT NULL,
     updated_at TIMESTAMP NULL,
     updated_by BIGINT NOT NULL
-);
-
-INSERT INTO user (full_name, username, email, password, remember_token, role, created_at, created_by, updated_at, updated_by)
-VALUES (
-    'Super Admin',
-    'super_admin',
-    'super_admin@admin.com',
-    '$2y$10$gcT11j089hMxv6cv9pkK9u/o.9Zj12qWjG8KWGVr0eZRc9NR6FKoK',
-    NULL,
-    'super_admin',
-    NOW(),
-    0,
-    NOW(),
-    0
 );
 
 INSERT INTO user (full_name, username, email, password, remember_token, role, created_at, created_by, updated_at, updated_by)

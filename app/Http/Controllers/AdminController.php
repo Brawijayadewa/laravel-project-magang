@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class SuperAdminController extends Controller
+class AdminController extends Controller
 {
     public function index()
     {
-        return view('layouts.back.super_admin.dashboard.index');
+        return view('layouts.back.admin.dashboard.index');
     }
 }

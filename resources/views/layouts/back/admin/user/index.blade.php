@@ -1,7 +1,7 @@
 @extends('template.back.index')
 
 @section('title')
-    Admin
+    User
 @endsection
 
 @section('content')
@@ -10,9 +10,9 @@
             <div class="card-body">
                 <div class="d-flex flex-row justify-content-between">
                     <div class="">
-                        <h5 class="m-0 font-weight-bold">Admin Table</h5>
+                        <h5 class="m-0 font-weight-bold">User</h5>
                     </div>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Create</button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap"><i class="fa fa-pencil-alt"></i> Create</button>
                 </div>
                 <div class="table-responsive mt-4">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -80,7 +80,7 @@
     function getUser()
     {
         $.ajax({
-            url: "/get-user-admin",
+            url: "{{ route('get_user') }}",
             type: "GET",
             success: function(response){
                 const user = response.user;

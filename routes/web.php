@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SalesCallController;
-use App\Http\Controllers\SuperAdminController;
-use App\Http\Controllers\UserAdminController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +55,8 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/sales-call', [SalesCallController::class, 'index'])->name('sales.index');
 Route::post('/sales-call', [SalesCallController::class, 'store'])->name('sales.store');
 
-Route::get('/dashboard-super-admin', [SuperAdminController::class, 'index'])->name('super_admin.index');
-Route::get('/user-admin', [UserAdminController::class, 'index'])->name('user_admin.index');
-Route::get('/get-user-admin', [UserAdminController::class, 'getUser'])->name('get_user_admin');
+Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
+    Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.index');
+    Route::get('/user', [UserController::class, 'index'])->name('user.index');
+    Route::get('/get-user', [UserController::class, 'getUser'])->name('get_user');
+});

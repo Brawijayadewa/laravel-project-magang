@@ -2,9 +2,8 @@
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center" href="{{ 
-        auth()->user()->role === 'super_admin' ? route('super_admin.index') : 
-        (auth()->user()->role === 'admin' ? route('admin.index') : 
-        (auth()->user()->role === 'sales' ? route('sales.index') : '#'))
+        auth()->user()->role === 'admin' ? route('admin.index') : 
+        auth()->user()->role === 'sales' ? route('sales.index') : '#'
     }}">
         <img src="{{ asset('assets/images/school_icon.png') }}" alt="" style="width:40px; height:auto;">
         <h6 class="ml-2 mt-2">School Management</h6>
@@ -14,8 +13,8 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item {{ request()->path() === 'dashboard-super-admin' || request()->path() === 'dashboard-admin' || request()->path() === 'dashboard-sales' ? 'active' : '' }}">
-        <a class="nav-link" href="{{ auth()->user()->role == "super_admin" ? route('super_admin.index') : '#' }}">
+    <li class="nav-item {{ request()->path() === 'admin/dashboard' || request()->path() === 'sales/dashboard' ? 'active' : '' }}">
+        <a class="nav-link" href="{{ auth()->user()->role == "admin" ? route('admin.index') : '#' }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span>
         </a>
@@ -30,11 +29,11 @@
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    @if(auth()->user()->role === 'super_admin')
+    @if(auth()->user()->role === 'admin')
         <li class="nav-item {{ request()->path() === 'user-admin' ? 'active' : '' }}">
-            <a class="nav-link" href="{{ route('user_admin.index') }}">
+            <a class="nav-link" href="{{ route('user.index') }}">
                 <i class="fas fa-user-cog"></i>
-                <span>Admin</span>
+                <span>User</span>
             </a>
         </li>
     @else
