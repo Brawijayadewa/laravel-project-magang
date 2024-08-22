@@ -19,19 +19,34 @@ class AuthController extends Controller
         ]); 
 
        $input = [
-        'username' => $request->username,
-        'password' => $request->password, 
+            'username' => $request->username,
+            'password' => $request->password, 
        ];
 
        if(Auth::attempt($input))
         {
-            return redirect('/dashboard-admin');
+            if(Auth::user()->role === 'super_admin')
+            {
+                return redirect()->route('super_admin.index');
+            }
+            if(Auth::user()->role === 'admin')
+            {
+                return redirect()->route('admin.index');
+            }
         }
 
         else
         {
             return back()->with('error', 'username or password is incorrect');
         } 
+    }
+
+    public function logout() {
+
+        Auth::logout();
+        session()->flush();
+
+        return redirect()->route('login.index');
     }
 
 }

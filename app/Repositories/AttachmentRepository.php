@@ -6,13 +6,6 @@ use Illuminate\Support\Facades\Storage;
 
 class AttachmentRepository {
 
-    protected $model;
-
-    public function __construct(Attachment $attachment)
-    {
-        $this->model = $attachment;
-    }
-
     public function create($param = [])
     {
         $image = $param['image'];
@@ -22,7 +15,7 @@ class AttachmentRepository {
 
         $param['url'] = $filename;
 
-        $this->model->create([
+        Attachment::create([
             'module' => $param['module'],
             'module_id' => $param['module_id'],
             'url' => $param['url'],

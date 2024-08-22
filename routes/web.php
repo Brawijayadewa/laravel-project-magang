@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SalesCallController;
+use App\Http\Controllers\SuperAdminController;
+use App\Http\Controllers\UserAdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,10 +50,11 @@ Route::post('/salesCall', [SalesCallController::class, 'store'])->name('sales.st
 
 Route::get('/login', [AuthController::class, 'loginIndex'])->name('login.index');
 Route::post('/login', [AuthController::class, 'login'])->name('login.store');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/sales-call', [SalesCallController::class, 'index'])->name('sales.index');
 Route::post('/sales-call', [SalesCallController::class, 'store'])->name('sales.store');
 
-Route::get('/dashboard-admin', function() {
-    return view('layouts.back.admin.dashboard.index');
-});
+Route::get('/dashboard-super-admin', [SuperAdminController::class, 'index'])->name('super_admin.index');
+Route::get('/user-admin', [UserAdminController::class, 'index'])->name('user_admin.index');
+Route::get('/get-user-admin', [UserAdminController::class, 'getUser'])->name('get_user_admin');
