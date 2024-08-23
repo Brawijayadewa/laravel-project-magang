@@ -1,13 +1,15 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center" href="{{ 
-        auth()->user()->role === 'admin' ? route('admin.index') : 
-        auth()->user()->role === 'sales' ? route('sales.index') : '#'
-    }}">
-        <img src="{{ asset('assets/images/school_icon.png') }}" alt="" style="width:40px; height:auto;">
-        <h6 class="ml-2 mt-2">School Management</h6>
-    </a>
+    <li class="nav-item d-flex align-items-center">
+        <a class="nav-link" href="{{ 
+            auth()->user()->role === 'admin' ? route('admin.index') : 
+            auth()->user()->role === 'sales' ? route('sales.index') : '#'
+        }}">
+            <img src="{{ asset('assets/images/school_icon.png') }}" alt="" style="width:40px; height:auto;" class="mb-2">
+            <span class="font-weight-bolder" style="font-size: 13px">School Management</span>
+        </a>
+    </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
