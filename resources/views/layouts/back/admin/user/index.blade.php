@@ -10,7 +10,7 @@
             <div class="card-body">
                 <div class="d-flex flex-row justify-content-between">
                     <div class="">
-                        <h5 class="m-0 font-weight-bold">User</h5>
+                        <h5 class="m-0 font-weight-bold text-black">User</h5>
                     </div>
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap"><i class="fa fa-pencil-alt"></i> Create</button>
                 </div>
