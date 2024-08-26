@@ -4,6 +4,16 @@
     User
 @endsection
 
+@push('page_css')
+    <style>
+        input::-ms-reveal,
+        input::-ms-clear {
+        display: none;
+        }
+    </style>
+@endpush
+
+
 @section('content')
     <div class="containter mx-3">
         <div class="card shadow mb-4">
