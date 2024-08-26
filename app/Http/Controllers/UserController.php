@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 use App\Repositories\UserRepository;
 
 class UserController extends Controller
@@ -27,5 +28,12 @@ class UserController extends Controller
             'message' => 'All user',
             'user' => $user,
         ], 200);
+    }
+
+    public function create()
+    {
+        $roles = User::$roles;
+
+        return view('layouts.back.admin.user.create', compact('roles'));
     }
 }

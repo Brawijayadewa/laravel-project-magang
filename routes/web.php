@@ -59,8 +59,5 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.index');
     Route::get('/user', [UserController::class, 'index'])->name('user.index');
     Route::get('/get-user', [UserController::class, 'getUser'])->name('get_user');
-});
-
-Route::get('create-user', function(){
-    return view('layouts.back.admin.user.create');
+    Route::get('/create-user', [UserController::class, 'create'])->name('user.create');
 });

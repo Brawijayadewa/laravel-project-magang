@@ -12,7 +12,7 @@
                     <div class="">
                         <h5 class="m-0 font-weight-bold text-black">User</h5>
                     </div>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap"><i class="fa fa-pencil-alt"></i> Create</button>
+                    <a href="{{ route('user.create')}}" class="btn btn-primary"><i class="fa fa-pencil-alt"></i> Create</a>
                 </div>
                 <div class="table-responsive mt-4">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -33,42 +33,6 @@
             </div>
         </div>
     </div> 
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Create admin</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form>
-                <div class="form-group">
-                  <label for="full-name" class="col-form-label">Full Name</label>
-                  <input type="text" class="form-control" id="full-name">
-                </div>
-                <div class="form-group">
-                  <label for="user-name" class="col-form-label">Username</label>
-                  <input type="text" class="form-control" id="user-name">
-                </div>
-                <div class="form-group">
-                  <label for="email-name" class="col-form-label">Email</label>
-                  <input type="text" class="form-control" id="email-name">
-                </div>
-                <div class="form-group">
-                  <label for="role-name" class="col-form-label">Role</label>
-                  <input type="text" class="form-control" id="role-name">
-                </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Enter</button>
-            </div>
-          </div>
-        </div>
-      </div>
 @endsection
 
 @push('page_js')
