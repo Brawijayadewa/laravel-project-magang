@@ -57,7 +57,12 @@ Route::post('/sales-call', [SalesCallController::class, 'store'])->name('sales.s
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.index');
+
+    // Admin user management
     Route::get('/user', [UserController::class, 'index'])->name('user.index');
-    Route::get('/get-user', [UserController::class, 'getUser'])->name('get_user');
-    Route::get('/create-user', [UserController::class, 'create'])->name('user.create');
+    Route::get('/user-get', [UserController::class, 'getUser'])->name('get_user');
+    Route::get('/user-create', [UserController::class, 'create'])->name('user.create');
+    Route::post('/user-store', [UserController::class, 'store'])->name('user.store');
+    Route::get('/user-edit/{user}', [UserController::class, 'edit'])->name('user.edit');
+    Route::patch('/user-update/{user}', [UserController::class, 'update'])->name('user.update');
 });
