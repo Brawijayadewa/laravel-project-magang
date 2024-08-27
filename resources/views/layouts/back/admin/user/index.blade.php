@@ -12,8 +12,13 @@
                     <div class="">
                         <h5 class="m-0 font-weight-bold text-black">User</h5>
                     </div>
-                    <a href="{{ route('user.create')}}" class="btn btn-primary"><i class="fa fa-pencil-alt"></i> Create</a>
+              <a href="{{ route('user.create')}}" class="btn btn-primary"><i class="fa fa-pencil-alt"></i> Create</a>
                 </div>
+                @if(session()->has('success'))
+                    <div class="alert alert-success mt-2">
+                        {{ session()->get('success') }}
+                    </div>
+                @endif        
                 <div class="table-responsive mt-4">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
@@ -68,7 +73,7 @@
                 user[i].email,
                 user[i].role,
                 `<div class="d-flex flex-row">
-                    <a href="" class="btn btn-info mr-2"><i class="fa fa-edit"></i></a>
+                    <a href="user-edit/${user[i].id}" class="btn btn-info mr-2"><i class="fa fa-edit"></i></a>
                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="" data-product-id=""><i class="fa fa-trash"></i></button>
                 </div>`
             ]);
@@ -76,6 +81,8 @@
 
         return row;
     }
+
+    function
 
     function dataTable(id_table, row_table) {
         id_table.DataTable().destroy();

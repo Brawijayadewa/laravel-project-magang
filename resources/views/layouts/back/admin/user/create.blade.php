@@ -21,7 +21,7 @@
                 <div class="d-flex flex-row justify-content-start">
                     <h5 class="m-0 font-weight-bold">Create User</h5>
                 </div>
-                <form action="" method="post" enctype="multipart/form-data" class="mt-5">
+                <form action="{{ route('user.store')}}" method="post" enctype="multipart/form-data" class="mt-5">
                     @csrf
                     <div class="row">
                         <div class="col-md-6">
@@ -54,10 +54,10 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="role">Role</label>
-                                <select class="form-control" name="role" id="role" value="{{ old('role') }}">
+                                <select class="form-control" name="role" id="role">
                                     <option value="" selected>Select Role</option>
                                     @foreach ($roles as $role)
-                                        <option value="{{ $role }}">{{ $role }}</option>
+                                        <option {{ $role === old('role') ? 'selected' : ''}} value="{{ $role }}">{{ $role }}</option>
                                     @endforeach
                                 </select>
                                 @error('role')
@@ -69,7 +69,7 @@
                             <div class="form-group">
                                 <label for="password">Password</label>
                                 <div class="input-group">
-                                    <input type="password" name="password" id="password" class="form-control" autocomplete="new-password" aria-describedby="password-group">
+                                    <input type="password" name="password" id="password" class="form-control" value="{{old('password')}}" autocomplete="new-password" aria-describedby="password-group">
                                     <div class="input-group-append">
                                         <span class="input-group-text" id="password-group">
                                             <i class="fa fa-eye" id="togglePassword" style="cursor: pointer;"></i>
@@ -85,7 +85,7 @@
                             <div class="form-group">
                                 <label for="retype_password">Retype Password</label>
                                 <div class="input-group">
-                                    <input type="password" name="retype_password" id="retype_password" class="form-control" autocomplete="new-password" aria-describedby="retype_password-group">
+                                    <input type="password" name="retype_password" id="retype_password" class="form-control" value="{{old('retype_password')}}" autocomplete="new-password" aria-describedby="retype_password-group">
                                     <div class="input-group-append">
                                         <span class="input-group-text" id="retype_password-group">
                                             <i class="fa fa-eye" id="toggleRetypePassword" style="cursor: pointer;"></i>
