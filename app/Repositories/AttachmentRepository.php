@@ -76,9 +76,9 @@ class AttachmentRepository {
         if($attachment->url)
         {
             Storage::disk('public')->delete($attachment->url);
+            $attachment->delete();
         }
 
-        $attachment->delete();
     }
 }
 
