@@ -82,6 +82,8 @@
 
     function deleteUser(id)
     {
+        const token = $('meta[name="csrf-token"]').attr('content');
+
         Swal.fire({
             title: 'Are you sure to delete this data?',
             text: "You won't be able to revert this!",
@@ -93,10 +95,10 @@
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
-                    url: '{{ route("user.destroy", ":id") }}'.replace(':id', id),
+                    url: '/admin/user-delete/'+id,
                     method: 'DELETE',
                     headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        'X-CSRF-TOKEN': token,
                     },
                     success: function(response){
                         if(response.success){

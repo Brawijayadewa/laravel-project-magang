@@ -38,7 +38,7 @@ class AttachmentRepository {
         $image = $param['image'];
         $filename = $param['module'] . '_' . $param['name'] . rand(1000,99999) . '.' . $image->extension();
 
-        $attachment = Attachment::where('attachment.module', $param['module'])->where('attachment.module_id', $param['module_id'])->get()->first();
+        $attachment = Attachment::where('attachment.module', $param['module'])->where('attachment.module_id', $param['module_id'])->first();
 
         if($attachment->url)
         {
@@ -71,14 +71,13 @@ class AttachmentRepository {
 
     public static function delete($param = [])
     {   
-        $attachment = Attachment::where('attachment.module', $param['module'])->where('attachment.module_id', $param['module_id'])->get()->first();
-
-        if($attachment->url)
+        $attachment = Attachment::where('attachment.module', $param['module'])->where('attachment.module_id', $param['module_id'])->first();
+        if($attachment && $attachment->url)
         {
             Storage::disk('public')->delete($attachment->url);
+            $attachment->delete();
         }
 
-        $attachment->delete();
     }
 }
 
