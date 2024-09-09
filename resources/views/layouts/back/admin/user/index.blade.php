@@ -95,7 +95,7 @@
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
-                    url: '/admin/user-delete/'+id,
+                    url: '{{ route("user.destroy", ":id") }}'.replace(':id', id),
                     method: 'DELETE',
                     headers: {
                         'X-CSRF-TOKEN': token,
