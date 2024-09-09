@@ -56,9 +56,9 @@
                             <div class="form-group">
                                 <label for="role">Role</label>
                                 <select class="form-control" name="role" id="role">
-                                    <option value="" selected>Select Role</option>
+                                    <option value="" >Select Role</option>
                                     @foreach ($roles as $role)
-                                        <option {{$role === $user->role ? 'selected' : '' }} value="{{ $role }}">{{ $role }}</option>
+                                        <option {{ $role === $user->role ? 'selected' : '' }} value="{{ $role }}">{{ $role }}</option>
                                     @endforeach
                                 </select>
                                 @error('role')
@@ -102,7 +102,7 @@
                             <div class="form-group">
                                 <label>Profile Image</label>
                                 <div class="pt-2" id="image_container" style="cursor: pointer;">
-                                    <img id="preview_image" src="{{ asset($user->url ? 'storage/' .$user->url : 'assets/images/empty-image.png')}}" style="height: 150px; width: 150px"/>
+                                    <img id="preview_image" src="{{ asset($user->url ? 'storage/'.$user->url : 'assets/images/empty-image.png') }}" style="height: 150px; width: 150px"/>
                                     <input hidden type="file" id="image" name="image">
                                 </div>
                             </div>
@@ -113,7 +113,7 @@
                     </div>
                     <div class="mt-3">
                         <button type="submit" class="btn btn-primary px-4">Submit</button>
-                        <button class="btn btn-danger px-4">Cancel</button>
+                        <a href="{{ route('user.index') }}" class="btn btn-danger px-4">Cancel</a>
                     </div>
                 </form>
             </div>

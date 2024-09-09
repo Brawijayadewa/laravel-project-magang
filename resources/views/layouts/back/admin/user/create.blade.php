@@ -1,7 +1,7 @@
 @extends('template.back.index')
 
 @section('title')
-    User
+    Create User
 @endsection
 
 @push('page_css')
@@ -21,7 +21,7 @@
                 <div class="d-flex flex-row justify-content-start">
                     <h5 class="m-0 font-weight-bold">Create User</h5>
                 </div>
-                <form action="{{ route('user.store')}}" method="post" enctype="multipart/form-data" class="mt-5">
+                <form action="{{ route('user.store') }}" method="post" enctype="multipart/form-data" class="mt-5">
                     @csrf
                     <div class="row">
                         <div class="col-md-6">
@@ -57,7 +57,7 @@
                                 <select class="form-control" name="role" id="role">
                                     <option value="" selected>Select Role</option>
                                     @foreach ($roles as $role)
-                                        <option {{ $role === old('role') ? 'selected' : ''}} value="{{ $role }}">{{ $role }}</option>
+                                        <option {{ $role === old('role') ? 'selected' : '' }} value="{{ $role }}">{{ $role }}</option>
                                     @endforeach
                                 </select>
                                 @error('role')
@@ -112,7 +112,7 @@
                     </div>
                     <div class="mt-3">
                         <button type="submit" class="btn btn-primary px-4">Submit</button>
-                        <button class="btn btn-danger px-4">Cancel</button>
+                        <a href="{{ route('user.index') }}" class="btn btn-danger px-4">Cancel</a>
                     </div>
                 </form>
             </div>

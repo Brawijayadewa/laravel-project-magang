@@ -14,11 +14,9 @@
                     </div>
               <a href="{{ route('user.create')}}" class="btn btn-primary"><i class="fa fa-pencil-alt"></i> Create</a>
                 </div>
-                @if(session()->has('success'))
-                    <div class="alert alert-success mt-2">
-                        {{ session()->get('success') }}
-                    </div>
-                @endif        
+                <div class="alert alert-success mt-2" style="{{ session()->has('success') ? '' : 'display: none;' }}" id="alert-success">
+                    {{ session()->get('success') }}
+                </div>
                 <div class="table-responsive mt-4">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
@@ -74,7 +72,7 @@
                 user[i].role,
                 `<div class="d-flex flex-row">
                     <a href="user-edit/${user[i].id}" class="btn btn-info mr-2"><i class="fa fa-edit"></i></a>
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="" data-product-id=""><i class="fa fa-trash"></i></button>
+                    <button onClick="deleteUser(${user[i].id})" type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                 </div>`
             ]);
         }
@@ -82,7 +80,37 @@
         return row;
     }
 
-    function
+    function deleteUser(id)
+    {
+        Swal.fire({
+            title: 'Are you sure to delete this data?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: '{{ route("user.destroy", ":id") }}'.replace(':id', id),
+                    method: 'DELETE',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response){
+                        if(response.success){
+                            getUser();
+                            $('#alert-success').text(response.message).show();
+                        }
+                    },
+                    error: function(error){
+                        console.log(error);
+                    }
+                });
+            }
+        });
+    }
 
     function dataTable(id_table, row_table) {
         id_table.DataTable().destroy();
